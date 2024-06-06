@@ -1,16 +1,12 @@
 package service
 
-import "EmegencyNotificationSystem/pkg/repository"
+import "EmegencyNotificationSystem/profile_service/pkg/repository"
 
 type Authorization interface {
 }
 
-type Notification interface {
-}
-
 type Service struct {
 	Authorization
-	Notification
 }
 
 func NewService(repos *repository.Repository) *Service {

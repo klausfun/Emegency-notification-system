@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"EmegencyNotificationSystem/pkg/service"
+	"EmegencyNotificationSystem/profile_service/pkg/service"
 	"github.com/gin-gonic/gin"
 )
 
@@ -24,14 +24,9 @@ func (h *Handler) InitRoutes() *gin.Engine {
 
 	api := router.Group("/api")
 	{
-		notifications := api.Group("/notifications")
+		users := api.Group("/users")
 		{
-			notifications.POST("/", h.createNotification)
-			notifications.GET("/", h.getNotifications)
-			notifications.GET("/:id", h.getNotificationById)
-			notifications.PUT("/", h.updateNotification)
-			notifications.DELETE("/", h.deleteNotification)
-			notifications.POST("/send", h.sendNotification)
+			users.POST("/", h.createUser)
 		}
 	}
 
