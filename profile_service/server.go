@@ -1,4 +1,4 @@
-package EmegencyNotificationSystem
+package profile_service
 
 import (
 	"context"
