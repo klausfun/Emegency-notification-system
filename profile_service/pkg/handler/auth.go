@@ -35,3 +35,24 @@ func (h *Handler) signUp(p graphql.ResolveParams) (interface{}, error) {
 	user.Id = id
 	return user, nil
 }
+
+func (h *Handler) signIn(p graphql.ResolveParams) (interface{}, error) {
+	input, ok := p.Args["input"].(map[string]interface{})
+	if !ok {
+		return nil, newErrorResponse("invalid input body", errors.New("invalid input body"))
+	}
+	email, emailOk := input["email"].(string)
+	password, passwordOk := input["password"].(string)
+	if !emailOk || !passwordOk || email == "" || password == "" {
+		return nil, newErrorResponse("invalid input body", errors.New("invalid input body"))
+	}
+
+	token, err := h.services.Authorization.GenerateToken(email, password)
+	if err != nil {
+		return nil, newErrorResponse("service failure", err)
+	}
+
+	return map[string]interface{}{
+		"token": token,
+	}, nil
+}

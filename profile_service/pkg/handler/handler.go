@@ -55,16 +55,16 @@ func (h *Handler) createSchema() graphql.Schema {
 				},
 				Resolve: h.signUp,
 			},
-			//"signIn": &graphql.Field{
-			//	Type:        schema_graphql.SignInResponse,
-			//	Description: "Sign in an existing user",
-			//	Args: graphql.FieldConfigArgument{
-			//		"input": &graphql.ArgumentConfig{
-			//			Type: graphql.NewNonNull(schema_graphql.SignInInput),
-			//		},
-			//	},
-			//	Resolve: h.signIn,
-			//},
+			"signIn": &graphql.Field{
+				Type:        schema_graphql.SignInResponse,
+				Description: "Sign in an existing user",
+				Args: graphql.FieldConfigArgument{
+					"input": &graphql.ArgumentConfig{
+						Type: graphql.NewNonNull(schema_graphql.SignInInput),
+					},
+				},
+				Resolve: h.signIn,
+			},
 		},
 	})
 
