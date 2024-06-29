@@ -1,7 +1,7 @@
 ports:
-  profile_service: "8000"
-  notification_service: "8080"
-  email_service: "80"
+  profile_service: "8080"
+  notification_service: "8000"
+  email_service: ""
 
 db:
   host: "localhost"

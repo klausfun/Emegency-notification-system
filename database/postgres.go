@@ -8,11 +8,11 @@ import (
 )
 
 const (
-	statusTable      = "status"
-	recipientsTable  = "recipients"
-	channelsTable    = "channels"
-	userTable        = "users"
-	userChannelTable = "user_channel"
+	StatusTable      = "status"
+	RecipientsTable  = "recipients"
+	ChannelsTable    = "channels"
+	UserTable        = "users"
+	UserChannelTable = "user_channel"
 )
 
 type Config struct {
@@ -41,7 +41,7 @@ func NewPostgresDB(cfg Config) (*sqlx.DB, error) {
 }
 
 func InitPostgres() (*sqlx.DB, error) {
-	db, err := NewPostgresDB(Config{
+	return NewPostgresDB(Config{
 		Host:     viper.GetString("db.host"),
 		Port:     viper.GetString("db.port"),
 		Username: viper.GetString("db.username"),
@@ -49,6 +49,4 @@ func InitPostgres() (*sqlx.DB, error) {
 		DBName:   viper.GetString("db.dbname"),
 		SSLMode:  viper.GetString("db.sslmode"),
 	})
-
-	return db, err
 }
